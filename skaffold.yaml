@@ -1,0 +1,46 @@
+apiVersion: skaffold/v2beta3
+kind: config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: karimgehad/mycoach-users
+      context: users
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+
+            src: 'src/**/*.ts'
+
+    - image: karimgehad/mycoach-coaching
+      context: coaching
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.ts'
+
+    - image: karimgehad/mycoach-payement
+      context: payement
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.ts'
+
+    - image: karimgehad/mycoach-sessions
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.ts'

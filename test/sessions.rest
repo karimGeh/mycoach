@@ -1,0 +1,17 @@
+###
+GET http://localhost:3000/api/session/60e722fe394fa73928e3ab35 HTTP/1.1
+content-type: application/json
+
+{
+}
+
+###
+POST http://localhost:3000/api/session/60e722fe394fa73928e3ab35 HTTP/1.1
+content-type: application/json
+
+{
+  "admin_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluaWQifQ.9oX0KoPvoM793q7l0jNYy8SShg3ygvzJVdzmKjog93k",
+  "user": "60e722fe394fa73928e3ab37",
+  "time": "2021-07-10T11:00:00+01:00",
+  "transaction": "60e722fe394fa73928e3ab39"
+}

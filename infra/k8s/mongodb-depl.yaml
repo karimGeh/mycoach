@@ -1,0 +1,36 @@
+# here we will creat a deployement and a service
+# to host a pod running mongodb
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo
+
+---
+# also a database needs a ClusterIP service to
+# to be able to connect to it from our microservices
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-srv
+spec:
+  selector:
+    app: mongodb
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

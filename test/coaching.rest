@@ -1,0 +1,20 @@
+POST http://localhost:3000/api/coach/createcoach HTTP/1.1
+content-type: application/json
+
+{
+  "admin_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluaWQifQ.9oX0KoPvoM793q7l0jNYy8SShg3ygvzJVdzmKjog93k",
+  "email":"test@test.com",
+  "calendar":"hello",
+  "username":"karim"
+}
+
+###
+POST http://localhost:3000/api/coach/createcoach HTTP/1.1
+content-type: application/json
+
+{
+  "admin_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluaWQifQ.9oX0KoPvoM793q7l0jNYy8SShg3ygvzJVdzmKjog93k",
+  "email":"test@test.com",
+  "username":"karim",
+  "calendar":"201siimv1mci911v5odk7g12j0@group.calendar.google.com"
+}

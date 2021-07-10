@@ -1,0 +1,42 @@
+# we creat a deployment to ensure that there's
+# always n pod that are running our image
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+        - name: users
+          image: karimgehad/mycoach-users
+          env:
+            - name: MONGO_URL
+              value: 'mongodb://mongodb-srv:27017/users'
+            - name: JWT_KEY
+              value: 'karimkarimkarimkarim'
+
+---
+# we creat a service of Type ClusterId which is
+# the default to be able to communicate with the
+# pod from inside of our cluster
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-srv
+spec:
+  selector:
+    app: users
+  ports:
+    - name: users
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

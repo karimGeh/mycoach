@@ -1,0 +1,48 @@
+# we creat a deployment to ensure that there's
+# always n pod that are running our image
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coaching-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coaching
+  template:
+    metadata:
+      labels:
+        app: coaching
+    spec:
+      containers:
+        - name: coaching
+          image: karimgehad/mycoach-coaching
+          env:
+            - name: MONGO_URL
+              value: 'mongodb://mongodb-srv:27017/coaching'
+            - name: JWT_KEY
+              value: 'karimkarimkarimkarim'
+            - name: JWT_KEY_ADMIN
+              value: 'jwtkeyadmin'
+            - name: ADMIN_ID
+              value: 'adminid'
+            - name: GOOGLE_API_KEY
+              value: 'AIzaSyDPRpU23K91XTr-ogT3ixFkuXDNUI-11wA'
+
+---
+# we creat a service of Type ClusterId which is
+# the default to be able to communicate with the
+# pod from inside of our cluster
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: coaching-srv
+spec:
+  selector:
+    app: coaching
+  ports:
+    - name: coaching
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

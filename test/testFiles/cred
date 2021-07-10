@@ -1,0 +1,23 @@
+USER  :  {
+  sessionsInQueue: [],
+  email: 'abdojihad930@gmail.com',
+  username: 'abdulrahman gehad',  
+  id: 60e722fe394fa73928e3ab37    
+}
+COACH :  {
+  sports: [ 'yoga' ],
+  balance: 0,
+  sessionsInQueue: [],
+  email: 'gehadsaddeldin.karim@ensam-casa.ma',
+  username: 'karim gehad',
+  __v: 0,
+  id: 60e722fe394fa73928e3ab35
+}
+Transaction :  {
+  coach: 60e722fe394fa73928e3ab35,
+  user: 60e722fe394fa73928e3ab37,
+  amount: 200,
+  createdAt: 2021-07-08T16:08:30.166Z,        
+  updatedAt: 2021-07-08T16:08:30.166Z,        
+  id: 60e722fe394fa73928e3ab39
+}
